@@ -1,13 +1,16 @@
+import { useEffect, useState } from "react";
 import "./App.css";
+import "./App.css";
+import { getAccessToken } from "./utils/getAccessToken";
+import { getArtistData } from "./utils/getArtistData";
+import Artist from "./components/artist";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <h1>Auto Trader Car Search</h1>
-      <h2>Please select your car below</h2>
-      <input />
+      <Artist />
     </div>
   );
-}
+};
 
 export default App;
