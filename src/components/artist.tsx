@@ -27,6 +27,26 @@ const Artist = () => {
     const token = res.access_token;
     const artistRes = await getArtistData(token, id);
     console.log(artistRes);
+    // const codeVerifier = generateRandomString(128);
+    // const code = generateCodeChallenge(codeVerifier);
+    // const CLIENT_ID = "e08fe592d77f4cf4bcfac64c33668a7d";
+    // const REDIRECT_URL = "http://localhost:3000/callback";
+    // // generateCodeChallenge(codeVerifier).then((codeChallenge) => {
+    // //   let state = generateRandomString(16);
+    // //   let scope = "user-read-private user-read-email";
+
+    // //   localStorage.setItem("code_verifier", codeVerifier);
+
+    // //   let args = `response_type=code&client_id=${CLIENT_ID}&scope=${scope}&redirect_uri=${REDIRECT_URL}&state=${state}&code_challenge_method=S256&code_challenge=${codeChallenge}`;
+
+    // //   console.log(args);
+
+    // //   window.location.href = "https://accounts.spotify.com/authorize?" + args;
+    // // });
+
+    // const res1: any = await generateCodeChallenge(codeVerifier);
+    // console.log(res1);
+
     setArtist((prev) => ({
       ...prev,
       name: artistRes.name,

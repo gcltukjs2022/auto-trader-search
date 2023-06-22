@@ -5,6 +5,17 @@
 }
 
 .App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 100px 50px;
+}
+
+.btn {
+  width: 200px;
+  height: 40px;
 }
 
 .section {
