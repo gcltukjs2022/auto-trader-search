@@ -3,13 +3,14 @@ import axios from "axios";
 export async function redirectToAuthCodeFlow(clientId: string) {
   const verifier = generateCodeVerifier(128);
   const challenge = await generateCodeChallenge(verifier);
+  const callBackUrl = process.env.REACT_APP_CALLBACKURL!;
 
   localStorage.setItem("verifier", verifier);
 
   const params = new URLSearchParams();
   params.append("client_id", clientId);
   params.append("response_type", "code");
-  params.append("redirect_uri", "http://localhost:3000/callback");
+  params.append("redirect_uri", callBackUrl);
   params.append("scope", "user-read-private user-read-email user-top-read");
   params.append("code_challenge_method", "S256");
   params.append("code_challenge", challenge);
@@ -40,13 +41,14 @@ export async function generateCodeChallenge(codeVerifier: string) {
 export async function getAccessToken(clientId: string, code: string) {
   const verifier = localStorage.getItem("verifier");
   const clientSecret = "885833b886ec4275b03cc9c48d20126c";
+  const callBackUrl = process.env.REACT_APP_CALLBACKURL!;
 
   const params = new URLSearchParams();
 
   params.append("client_id", clientId);
   params.append("grant_type", "authorization_code");
   params.append("code", code);
-  params.append("redirect_uri", "http://localhost:3000/callback");
+  params.append("redirect_uri", callBackUrl);
   params.append("code_verifier", verifier!);
 
   const authString = `${clientId}:${clientSecret}`;
